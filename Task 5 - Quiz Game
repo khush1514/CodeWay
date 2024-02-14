@@ -1,0 +1,51 @@
+import random
+
+quiz_questions = {
+    "What is the longest river in the world?" : "Nile",
+    "Which country is known as the Land of the Rising Sun?": "Japan",
+    "What city is the Statue of Liberty in?": "New York City",
+    "What is the largest planet in our solar system?": "Jupiter",
+    "Which sport is known as the 'king of sports'?": "Soccer(Football)"
+}
+
+def display_welcome_message():
+    print("Welcome to the Quiz Game!")
+    print("You will be asked multiple-choice questions. Let's see how many you can answer correctly!")
+
+def present_quiz_questions():
+    questions = list(quiz_questions.keys())
+    random.shuffle(questions)
+    score = 0
+
+    for question in questions:
+        print(question)
+        user_answer = input("Your answer: ").strip().title()
+
+        if user_answer == quiz_questions[question]:
+            print("Correct!")
+            score += 1
+        else:
+            print(f"Incorrect! The correct answer is: {quiz_questions[question]}")
+
+    return score
+
+def play_again():
+    while True:
+        response = input("Do you want to play again? (yes/no): ").lower()
+        if response == "yes":
+            return True
+        elif response == "no":
+            return False
+        else:
+            print("Invalid input. Please enter 'yes' or 'no'.")
+
+def main():
+    display_welcome_message()
+    play = True
+    while play:
+        score = present_quiz_questions()
+        print(f"Your final score is: {score}/{len(quiz_questions)}")
+        play = play_again()
+
+if __name__ == "__main__":
+    main()
