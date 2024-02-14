@@ -1,0 +1,30 @@
+class Task:
+    def __init__(self, task_id, description, due_date, completed=False):
+        self.task_id = task_id
+        self.description = description
+        self.due_date = due_date
+        self.completed = completed
+
+class ToDoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+
+    def list_tasks(self):
+        for task in self.tasks:
+            print(f"Task ID: {task.task_id}, Description: {task.description}, Due Date: {task.due_date}, Completed: {task.completed}")
+
+if __name__ == "__main__":
+    todo_list = ToDoList()
+
+    task1 = Task(1, "Complete project", "2024-02-15")
+    task2 = Task(2, "Submit report", "2024-02-20")
+    task3 = Task(3, "Prepare presentation", "2024-02-29")
+
+    todo_list.add_task(task1)
+    todo_list.add_task(task2)
+    todo_list.add_task(task3)
+
+    todo_list.list_tasks()
